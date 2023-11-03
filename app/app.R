@@ -1,12 +1,16 @@
 
 library(shiny)
-library(palmerpenguins)
-library(ggplot2)
 library(purrr)
 library(dplyr)
-library(echarts4r)
+library(DT)
+library(htmltools)
+library(shinyWidgets)
+library(datamods)
+library(pointblank)
 
 # source external files
+
+
 
 # source all modules
 mod_file_path <- paste0('./R')
@@ -26,10 +30,10 @@ purrr::walk(analyticscripts$value, source)
 # mod app
 penguinsApp <- function() {
   ui <- fluidPage(
-    mod_penguinsUI("id1")
+   homeUI("id1")
   )
   server <- function(input, output, session) {
-    mod_penguinsServer("id1")
+    homeServer("id1")
   }
   shinyApp(ui, server)  
 }
